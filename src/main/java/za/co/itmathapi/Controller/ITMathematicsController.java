@@ -47,7 +47,7 @@ public class ITMathematicsController {
 		itmathMailMessage.setText("Hello sir, your bot here" + "\n\n\nYou've recived the following recommendation:\n\n" + recomandation+"\n\n\nRegards\nYour Trusted Bot");
 		
 		itmathMailSender.send(itmathMailMessage);
-		rFeedback.put("Feedback", "Thank for Your recommendation,it has been sent to Andries Chimule");
+		rFeedback.put("Feedback", "Thank for Your recommendation, it has been sent to Andries Chimule :->)");
 		return rFeedback.toString();
 	}
 	
