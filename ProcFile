@@ -1,0 +1,1 @@
+web:java $JAVA_DPTS -jar target/dependecy/webapp/webapp-runner.jar --port $PORT target/*.jar
