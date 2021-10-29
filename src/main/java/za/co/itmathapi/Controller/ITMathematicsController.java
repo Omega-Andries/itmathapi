@@ -16,7 +16,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 @RestController
 @RequestMapping("api/")
 public class ITMathematicsController {
-	@SuppressWarnings("unused")
+	
 	@Autowired
 	private JavaMailSender itmathMailSender;
 	
@@ -41,7 +41,7 @@ public class ITMathematicsController {
 		
 		System.out.println(recomandation);
 		
-		itmathMailMessage.setFrom("four0founders3@outlook.com");
+		itmathMailMessage.setFrom("tsaomegatech@outlook.com");
 		itmathMailMessage.setTo("andrieschimule@gmail.com");
 		itmathMailMessage.setSubject("IT Mathematics App Recommendation");
 		itmathMailMessage.setText("Hello sir, your bot here" + "\n\n\nYou've recived the following recommendation:\n\n" + recomandation+"\n\n\nRegards\nYour Trusted Bot");
@@ -61,7 +61,7 @@ public class ITMathematicsController {
 		String subject = theContact.get("Subject").asText();
 		String msgDate = theContact.get("Date").asText();
 		
-		itmathMailMessage.setFrom("four0founders3@outlook.com");
+		itmathMailMessage.setFrom("tsaomegatech@outlook.com");
 		itmathMailMessage.setTo("andrieschimule@gmail.com");
 		itmathMailMessage.setSubject(subject);
 		itmathMailMessage.setText("Hello sir, your bot here" + 
