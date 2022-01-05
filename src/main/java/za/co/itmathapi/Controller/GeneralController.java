@@ -27,26 +27,68 @@ public class GeneralController {
 	
 	@PostMapping("permanantlyreject")
 	public String permanantRejectMail(@RequestBody JsonNode theReasons) {
+		
 		JSONObject statusJSN = new JSONObject();
 		
+		//get the information
 		String clientName = theReasons.get("Client_Name").asText();
 		String clientAppName = theReasons.get("App_Name").asText();
 		String clientEmail = theReasons.get("Client_Email").asText();
 		String ReasonForReject = theReasons.get("Reject_Reason").asText();
+		
+		//set email reasoning
 		generalMailMessage.setFrom("tsaomegatech@outlook.com");
 		generalMailMessage.setSubject("No Reply - Application Rejected");
 		generalMailMessage.setTo(clientEmail);
+		generalMailMessage.setReplyTo("andrieschimule@gmail.com");
 		
-		String theMessage = "Greetings " + clientName + "\n\nI am a bot from TsaOmega Technologies (name = The_Dries)\n\n\n" 
-						+	"Your request for the application with the name " + clientAppName + " has been denied, the reason for this rejection is:\n"
+		//write the email
+		String theMessage = "Greetings " + clientName + "\n\nI am a bot from TsaOmega Technologies (name = The_Dries)\n\n" 
+						+	"Your request for the application with the name " + clientAppName + " has been denied,\n"
+						+   "The reason from the company for this denial is:\n\n"
 						+   ReasonForReject + "\n\nIf you have any questions, please email: andrieschimule@gmail.com \n\n We'd love to hear from you again\n\n" 
 						+   "Kind Regards\nTsaOmega Technologies";
-		generalMailMessage.setReplyTo("andrieschimule@gmail.com");
-		generalMailMessage.setText(theMessage);
 		
+		//set the message and send the email.
+		generalMailMessage.setText(theMessage);
 		generalMailSender.send(generalMailMessage);
+		
+		statusJSN.put("Status", "Email Sent");
+		
+		return statusJSN.toString();
+	}
+	
+	@PostMapping("freezereject")
+	public String freezeRejectMail(@RequestBody JsonNode theReasons) {
+		JSONObject statusJSN = new JSONObject();
+		
+		//get the information
+		String clientName = theReasons.get("Client_Name").asText();
+		String clientAppName = theReasons.get("App_Name").asText();
+		String clientEmail = theReasons.get("Client_Email").asText();
+		String ReasonForReject = theReasons.get("Reject_Reason").asText();
+		
+		//set email reasoning
+		generalMailMessage.setFrom("tsaomegatech@outlook.com");
+		generalMailMessage.setSubject("No Reply - Application Freezed");
+		generalMailMessage.setTo(clientEmail);
+		generalMailMessage.setReplyTo("andrieschimule@gmail.com");
+		
+		//write the email
+		String theMessage = "Greetings " + clientName + "\n\nI am a bot from TsaOmega Technologies (name = The_Dries)\n\n" 
+						+	"Your request for the application with the name " + clientAppName + " has been freezed, this means that the work towards it's creation has stopped."
+						+   "The reason from the company for this freeze is:\n\n"
+						+   ReasonForReject + "\n\nIf you have any questions, please email: andrieschimule@gmail.com \n\n We'd love to hear from you again\n\n" 
+						+   "Kind Regards\nTsaOmega Technologies";
+		
+		//set the message and send the email.
+		generalMailMessage.setText(theMessage);
+		generalMailSender.send(generalMailMessage);
+		
 		statusJSN.put("Status", "Email Sent");
 		return statusJSN.toString();
 	}
+	
+	
 	
 }

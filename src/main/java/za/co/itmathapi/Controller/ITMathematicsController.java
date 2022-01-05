@@ -72,8 +72,9 @@ public class ITMathematicsController {
 		mFeedback.put("Feedback", "Thank you, Your message has been successfully sent to Andries Chimule");
 		
 		return mFeedback.toString();
-		
-		
+			
 	}
+	
+	
 }
 
