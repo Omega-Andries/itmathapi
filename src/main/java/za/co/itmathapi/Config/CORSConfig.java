@@ -12,7 +12,7 @@ public class CORSConfig {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowedMethods("POST", "PUT", "GET", "DELETE").allowedHeaders("*").allowedOrigins("http://localhost:4200/*", "https://tsaomega-tech.web.app/*", "https://it-mathematics.web.app/*");
+				registry.addMapping("/**").allowedMethods("POST", "PUT", "GET", "DELETE").allowedHeaders("*").allowedOrigins("http://localhost:4200", "https://tsaomega-tech.web.app", "https://it-mathematics.web.app");
 			}
 		};
 	}

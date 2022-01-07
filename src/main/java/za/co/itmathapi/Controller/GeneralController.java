@@ -29,7 +29,7 @@ public class GeneralController {
 	public String permanantRejectMail(@RequestBody JsonNode theReasons) {
 		
 		JSONObject statusJSN = new JSONObject();
-		
+		System.out.println("I'm in");
 		//get the information
 		String clientName = theReasons.get("Client_Name").asText();
 		String clientAppName = theReasons.get("App_Name").asText();
