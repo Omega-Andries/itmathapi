@@ -89,6 +89,64 @@ public class GeneralController {
 		return statusJSN.toString();
 	}
 	
+	@PostMapping("pendingapp")
+	public String pendingappemail(@RequestBody JsonNode theReasons) {
+		JSONObject statusJSN = new JSONObject();
+		
+		//get the information
+		String clientName = theReasons.get("Client_Name").asText();
+		String clientAppName = theReasons.get("App_Name").asText();
+		String clientEmail = theReasons.get("Client_Email").asText();
+		
+		//set email reasoning
+		generalMailMessage.setFrom("tsaomegatech@outlook.com");
+		generalMailMessage.setSubject("No Reply - Application Freezed");
+		generalMailMessage.setTo(clientEmail);
+		generalMailMessage.setReplyTo("andrieschimule@gmail.com");
+		
+		//write the email
+		String theMessage = "Greetings " + clientName + "\n\nI am a bot from TsaOmega Technologies (name = The_Dries)\n\n" 
+						+	"Thank you for your request of the application with the name " + clientAppName + ", Due to many requests of apps, we had to place it in the waiting list.\n\n"
+						+   "Don't stress though, the second we are done reviewing it, we will reach out to you."
+						+   "\n\nIf you have any questions, please email: andrieschimule@gmail.com \n\n We'd love to hear from you again\n\n" 
+						+   "Kind Regards\nTsaOmega Technologies";
+		
+		//set the message and send the email.
+		generalMailMessage.setText(theMessage);
+		generalMailSender.send(generalMailMessage);
+		
+		statusJSN.put("Status", "Email Sent");
+		return statusJSN.toString();
+	}
 	
+	@PostMapping("acceptedapp")
+	public String acceptedappemail(@RequestBody JsonNode theReasons) {
+		JSONObject statusJSN = new JSONObject();
+		
+		//get the information
+		String clientName = theReasons.get("Client_Name").asText();
+		String clientAppName = theReasons.get("App_Name").asText();
+		String clientEmail = theReasons.get("Client_Email").asText();
+		
+		//set email reasoning
+		generalMailMessage.setFrom("tsaomegatech@outlook.com");
+		generalMailMessage.setSubject("No Reply - Application Freezed");
+		generalMailMessage.setTo(clientEmail);
+		generalMailMessage.setReplyTo("andrieschimule@gmail.com");
+		
+		//write the email
+		String theMessage = "Greetings " + clientName + "\n\nI am a bot from TsaOmega Technologies (name = The_Dries)\n\n" 
+						+	"Thank you for your request of the application with the name " + clientAppName + ", it has been successfully accepted :->)\n\n"
+						+   "We're reviewing it currently and we will reach out to you as soon as we have any questions."
+						+   "\n\nIf you have any questions, please email: andrieschimule@gmail.com \n\n We'd love to hear from you again\n\n" 
+						+   "Kind Regards\nTsaOmega Technologies";
+		
+		//set the message and send the email.
+		generalMailMessage.setText(theMessage);
+		generalMailSender.send(generalMailMessage);
+		
+		statusJSN.put("Status", "Email Sent");
+		return statusJSN.toString();
+	}
 	
 }
