@@ -70,7 +70,7 @@ public class GeneralController {
 		
 		//set email reasoning
 		generalMailMessage.setFrom("tsaomegatech@outlook.com");
-		generalMailMessage.setSubject("No Reply - Application Freezed");
+		generalMailMessage.setSubject("No Reply - Request Accepted");
 		generalMailMessage.setTo(clientEmail);
 		generalMailMessage.setReplyTo("andrieschimule@gmail.com");
 		
@@ -100,7 +100,7 @@ public class GeneralController {
 		
 		//set email reasoning
 		generalMailMessage.setFrom("tsaomegatech@outlook.com");
-		generalMailMessage.setSubject("No Reply - Application Freezed");
+		generalMailMessage.setSubject("No Reply - Request Pending");
 		generalMailMessage.setTo(clientEmail);
 		generalMailMessage.setReplyTo("andrieschimule@gmail.com");
 		
